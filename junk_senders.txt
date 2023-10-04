@@ -1,0 +1,3 @@
+# use this file to list all the case insensitive phrases to search for in the sender name and email address that will be 
+# considered junk. Note, spaces will be removed, so "hello world" will match both "helloworld" and "hello world"
+viagra
