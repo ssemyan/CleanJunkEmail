@@ -41,10 +41,16 @@ def CleanJunk():
             print(msg.to, from_value, msg.subject)
             is_junk = False
 
-            # senders with empty email addresses are junk (can optionally check if email is sent to me)
-            if msg.from_values.email == '': # or str(msg.to).lower().find(EMAIL_USERNAME) == -1:
+            # senders with empty email addresses
+            if msg.from_values.email == '':
                 print(f'IS JUNK: empty email')
                 is_junk = True
+
+            # where not on the to or cc
+            if not is_junk:
+                if str(msg.to).lower().find(EMAIL_USERNAME) == -1 and str(msg.cc).lower().find(EMAIL_USERNAME) == -1:
+                    print(f'IS JUNK: not on to or cc')
+                    is_junk = True
 
             if not is_junk:
                 for sender in junk_senders:
