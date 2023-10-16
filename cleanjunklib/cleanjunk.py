@@ -17,10 +17,11 @@ def CleanJunk():
 
     # load file into array of values
     with open('junk_senders.txt', 'r') as file:
-        junk_senders = [line.strip() for line in file if not line.startswith('#')]
+        junk_senders = [line.strip() for line in file if line.strip() and not line.startswith('#')]
 
     with open('junk_subjects.txt', 'r') as file:
-        junk_subjects = [line.strip() for line in file if not line.startswith('#')]
+        junk_subjects = [line.strip() for line in file if line.strip() and not line.startswith('#')]
+
 
     # Get date, subject and body len of all emails from INBOX folder
     with MailBox(EMAIL_IMAP_SERVER).login(EMAIL_USERNAME, EMAIL_PASSWORD) as mailbox:
